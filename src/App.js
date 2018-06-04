@@ -79,12 +79,20 @@ class App extends Component {
     })
   }
 
+  removeContract=(id)=>{
+    console.log("hello world");
+    console.log(id);
+    firebase.database().ref(`/contracts/${id}`).remove();
+  }
+
   render() {
     let allContracts = this.state.allContracts.map((contract) => {
       return (<ContractDisplay
         name={contract.name}
         company={contract.company}
         detail={contract.detail}
+        id={contract.id}
+        removeContract={this.removeContract}
       />);
     });
     return (

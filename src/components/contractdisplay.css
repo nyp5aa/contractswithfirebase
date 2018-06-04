@@ -45,6 +45,12 @@
     margin-right: auto;
 }
 
+.remove img:hover {
+    text-align: center;
+    padding: 3px;
+    outline: 2px solid black;
+}
+
 .remove img{
     width: 100%;
     height: auto;
