@@ -7,12 +7,12 @@ import firebase from 'firebase';
 
 // Firebase setup and initailization
 const config = {
-  apiKey: "AIzaSyDwvjb3Ps20MkdUZTH6nYNIrJl6L8RmA-I",
-  authDomain: "contractwithfirebase.firebaseapp.com",
-  databaseURL: "https://contractwithfirebase.firebaseio.com",
-  projectId: "contractwithfirebase",
+  apiKey: "AIzaSyAPVXDpVBMJhgpmbd0pkCS792rKMkgmBFo",
+  authDomain: "contractswithfirebase.firebaseapp.com",
+  databaseURL: "https://contractswithfirebase.firebaseio.com",
+  projectId: "contractswithfirebase",
   storageBucket: "",
-  messagingSenderId: "820855672281"
+  messagingSenderId: "364799498818"
 };
 firebase.initializeApp(config);
 
@@ -88,8 +88,6 @@ class App extends Component {
   // This function is called anytime the trashcan symbol is pressed. This removes the contract
   // from firebase thus triggering the update on the actual page.
   removeContract = (id) => {
-    console.log("hello world");
-    console.log(id);
     firebase.database().ref(`/contracts/${id}`).remove();
   }
 
@@ -103,6 +101,7 @@ class App extends Component {
         removeContract={this.removeContract}
       />);
     });
+    console.log(allContracts);
     return (
       <div>
         <ContractInput
