@@ -1,0 +1,51 @@
+.single-contract {
+    max-width: 35%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    text-align: center;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.title {
+    padding-left: 10%;
+    padding-top: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+    padding-bottom: 5px;
+    padding-right: 10%;
+}
+
+.responses {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px;
+}
+
+#company {
+    padding-left: 15px;
+}
+
+#detail {
+    padding-left: 40px;
+}
+
+.remove {
+    padding: 20px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.remove img{
+    width: 100%;
+    height: auto;
+}
