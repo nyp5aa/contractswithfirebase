@@ -4,6 +4,8 @@ import ContractInput from "./components/contractInput";
 import ContractDisplay from "./components/contractdisplay";
 import firebase from 'firebase';
 
+
+// Firebase setup and initailization
 const config = {
   apiKey: "AIzaSyDwvjb3Ps20MkdUZTH6nYNIrJl6L8RmA-I",
   authDomain: "contractwithfirebase.firebaseapp.com",
@@ -25,6 +27,7 @@ class App extends Component {
     }
   }
 
+  // This updates the inputed symbols real time
   updateContract = (e, num) => {
     if (num == 1) {
       this.setState({
@@ -43,6 +46,8 @@ class App extends Component {
     }
   }
 
+  // Called everytime the submit button is pressed. A contract item is created and stored in
+  // firebase. Then the realtime storage of typed symbols are set to empty strings.
   submitContract = () => {
     let contract = {
       name: this.state.name,
@@ -62,6 +67,7 @@ class App extends Component {
     document.getElementById("detailText").value = "";
   }
 
+  // Everytime this component mounts, this function updates the list of contracts by pulling from firebase
   componentDidMount() {
     firebase.database().ref('contracts').on('value', (snapshot) => {
       let updatedListOfContracts = [];
@@ -79,7 +85,9 @@ class App extends Component {
     })
   }
 
-  removeContract=(id)=>{
+  // This function is called anytime the trashcan symbol is pressed. This removes the contract
+  // from firebase thus triggering the update on the actual page.
+  removeContract = (id) => {
     console.log("hello world");
     console.log(id);
     firebase.database().ref(`/contracts/${id}`).remove();
