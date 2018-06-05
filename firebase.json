@@ -1,7 +1,4 @@
 {
-  "database": {
-    "rules": "firebase use --add"
-  },
   "hosting": {
     "public": "build",
     "ignore": [
