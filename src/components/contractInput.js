@@ -7,22 +7,30 @@ class ContractInput extends Component {
     constructor(props) {
         super(props);
     }
+
+    handleKeyPress=(e)=>{
+        if(e.key === 'Enter'){
+            this.props.submitContract();
+        }
+    }
+//this.props.updateContract
     render() {
         const { n, c, d } = this.props;
         return (
             <div className="input-page">
-                Add Contract
+                Edit Contracts
                 <div className="entries">
-                    <TextField label="Name" onChange={(e) => this.props.updateContract(e, 1)} value={this.n} id="nameText" />
+                    <TextField label="Name" onKeyPress={this.handleKeyPress} onChange={(e) => this.props.updateContract(e, 1)} value={n} id="nameText" />
                 </div>
                 <div className="entries">
-                    <TextField label="Company" onChange={(e) => this.props.updateContract(e, 2)} value={this.c} id="companyText" />
+                    <TextField label="Company" onKeyPress={this.handleKeyPress} onChange={(e) => this.props.updateContract(e, 2)} value={c} id="companyText" />
                 </div>
                 <div className="entries">
-                    <TextField label="Details" onChange={(e) => this.props.updateContract(e, 3)} value={this.d} id="detailText" />
+                    <TextField label="Details" onKeyPress={this.handleKeyPress} onChange={(e) => this.props.updateContract(e, 3)} value={d} id="detailText" />
                 </div>
                 <div className="entries">
-                    <Button color="primary" variant= "contained" onClick={this.props.submitContract}> SUBMIT </Button>
+                    <Button color="default" variant= "outlined" onClick={this.props.submitContract}> ADD </Button>
+                    <Button color="secondary" variant= "outlined" onClick={this.props.deleteAllContracts}> DELETE ALL </Button>
                 </div>
             </div>
         );

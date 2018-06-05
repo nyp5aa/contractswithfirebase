@@ -1,7 +1,10 @@
 .single-contract {
-    max-width: 35%;
-    margin: auto;
-    margin-bottom: 15px;
+    width: 30%;
+    margin: 1%;
+}
+
+.background-color{
+    background-color: rgba(248, 248, 248, 0.87);
 }
 
 .name {
@@ -49,9 +52,11 @@
     text-align: center;
     padding: 3px;
     outline: 2px solid black;
+    opacity: 1;
 }
 
 .remove img{
     width: 100%;
     height: auto;
+    opacity: .5;
 }

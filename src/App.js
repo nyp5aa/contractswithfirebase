@@ -4,7 +4,6 @@ import ContractInput from "./components/contractInput";
 import ContractDisplay from "./components/contractdisplay";
 import firebase from 'firebase';
 
-
 // Firebase setup and initailization
 const config = {
   apiKey: "AIzaSyAPVXDpVBMJhgpmbd0pkCS792rKMkgmBFo",
@@ -49,10 +48,22 @@ class App extends Component {
   // Called everytime the submit button is pressed. A contract item is created and stored in
   // firebase. Then the realtime storage of typed symbols are set to empty strings.
   submitContract = () => {
+    let tempName = this.state.name;
+    let tempCompany = this.state.company;
+    let tempDetail = this.state.detail;
+    if(tempName === ""){
+      tempName = "Unknown"
+    }
+    if(tempCompany === ""){
+      tempCompany = "Unknown"
+    }
+    if(tempDetail === ""){
+      tempDetail = "Unknown"
+    }
     let contract = {
-      name: this.state.name,
-      company: this.state.company,
-      detail: this.state.detail
+      name: tempName,
+      company: tempCompany,
+      detail: tempDetail
     }
     firebase.database().ref('contracts').push(contract);
     this.setState({
@@ -60,11 +71,6 @@ class App extends Component {
       company: "",
       detail: "",
     });
-    // I tried for a long time trying to pass functions and props down to set the input
-    // text fields back to empty after submitting, but couldn't get it to work.
-    document.getElementById("nameText").value = "";
-    document.getElementById("companyText").value = "";
-    document.getElementById("detailText").value = "";
   }
 
   // Everytime this component mounts, this function updates the list of contracts by pulling from firebase
@@ -91,6 +97,10 @@ class App extends Component {
     firebase.database().ref(`/contracts/${id}`).remove();
   }
 
+  deleteAllContracts = () =>{
+    firebase.database().ref("/contracts").remove();
+  }
+
   render() {
     let allContracts = this.state.allContracts.map((contract) => {
       return (<ContractDisplay
@@ -101,17 +111,19 @@ class App extends Component {
         removeContract={this.removeContract}
       />);
     });
-    console.log(allContracts);
     return (
       <div>
         <ContractInput
           updateContract={this.updateContract}
           submitContract={this.submitContract}
+          deleteAllContracts={this.deleteAllContracts}
           n={this.state.name}
           c={this.state.company}
           d={this.state.detail}
         />
-        {allContracts}
+        <div className="flexbox">
+          {allContracts}
+        </div>
       </div>
     );
   }

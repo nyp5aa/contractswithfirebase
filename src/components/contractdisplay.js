@@ -10,8 +10,8 @@ class ContractDisplay extends Component {
     render() {
         const { name, company, detail, id } = this.props;
         return (
-            <div>
-                < Card className="single-contract">
+            < Card className="single-contract" raised="true" classes="div">
+                <div className="background-color">
                     <div className="name">
                         {name}
                     </div>
@@ -30,8 +30,8 @@ class ContractDisplay extends Component {
                     <div className="remove">
                         <img src={Close} onClick={() => this.props.removeContract(id)}/>
                     </div>
-                </Card >
-            </div>
+                </div>
+            </Card >
         );
     }
 }
